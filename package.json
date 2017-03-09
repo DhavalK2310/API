@@ -1,0 +1,30 @@
+{
+  "name": "api",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "angular-datatables": "^2.1.0",
+    "angular-smart-table": "^2.1.8",
+    "angularjs": "0.0.1",
+    "body-parser": "^1.16.1",
+    "cookie-parser": "^1.4.3",
+    "datatables.net": "^1.10.13",
+    "datatables.net-dt": "^1.10.13",
+    "db": "^1.0.6",
+    "debug": "^2.6.1",
+    "express": "^4.14.1",
+    "float": "^1.0.2",
+    "jade": "^1.11.0",
+    "jquery": "^3.1.1",
+    "metismenu": "^2.6.3",
+    "mongod": "^2.0.0",
+    "mongodb": "^2.2.24",
+    "mongoose": "^4.8.4",
+    "morgan": "^1.8.1",
+    "serve-favicon": "^2.3.2",
+    "session": "^0.1.0"
+  }
+}

@@ -1,0 +1,17 @@
+var mongoose = require('mongoose');
+var assert = require('assert');
+var Schema = mongoose.Schema;
+var LoginSchema = new Schema({
+	username:{
+		type:String,
+		require:true,
+		unique:true
+	},
+	password:{
+		type:String,
+		required:true
+	}
+},{timestamps:true //Add two fields automatically createdAt and updatedAt
+});
+var Logins=mongoose.model('Login',LoginSchema);
+module.exports=Logins;

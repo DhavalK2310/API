@@ -1,0 +1,54 @@
+var express = require('express');
+var bodyParser = require('body-parser');
+var mongoose = require ('mongoose');
+var Registers = require('../models/registerschema');
+
+var registerRouter = express.Router();
+registerRouter.use(bodyParser.json());
+
+registerRouter.route('/')
+.get(function(req,res){
+	Registers.find({},function(err,user){
+		if(err) throw err;
+		res.json(user);
+		// 200, application/json
+	});
+})
+.post(function(req,res){
+	Registers.create(req.body/**/,function(err,user){
+		if(err) throw err;
+		console.log('User added');
+		res.writeHead(200,{'content-Type':'text/plain'});
+		var id=user._id;
+		res.end('Added User : '+id);
+	});
+});
+
+registerRouter.route('/Login')
+.post(function(req,res){
+	var userName=req.body.username;
+	var password = req.body.password;
+	Registers.find({"username":userName},function(err,user){
+		if(err) res.json({"status":"Username Does Nor"});
+		try {
+			if(user[0].password===password){
+			res.json({"status":"success","message":"success"});
+			}
+			else{
+				res.json({"status":"fail","message":"Invalid Password"});
+			}
+		} catch (err) {
+			res.json({"status":"fail","message":"Email does not exist"});
+		  // Handle the error here.
+		}
+		// if(user.count>0){
+			
+		// }
+		// else{
+			
+		// }
+		
+		// res.json(user);
+	});
+});
+module.exports = registerRouter;

@@ -1,0 +1,18 @@
+var express = require('express');
+var bodyParser = require('body-parser');
+var mongoose = require ('mongoose');
+var Logins = require('../models/registerschema');
+
+var loginRouter = express.Router();
+loginRouter.use(bodyParser.json());
+
+loginRouter.route('/')
+.post(function(req,res){
+	var username = req.body.username;
+	var password = req.body.password;
+	Logins.find({},function(err,product){
+		if(err) throw err;
+		res.json(product);
+	});
+});
+module.exports = loginRouter;

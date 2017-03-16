@@ -16,7 +16,7 @@ var bookingRouter = require('./routes/bookingrouter');
 
 var mongoose = require('mongoose');
 
-var url = 'mongodb://MMGroupDB:chirag@20@cluster0-shard-00-00-mjo4a.mongodb.net:27017,cluster0-shard-00-01-mjo4a.mongodb.net:27017,cluster0-shard-00-02-mjo4a.mongodb.net:27017/MMGroupDB?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin';
+var url = 'mongodb://MMGroupDB:beZNpV6yphJecgWr@cluster0-shard-00-00-mjo4a.mongodb.net:27017,cluster0-shard-00-01-mjo4a.mongodb.net:27017,cluster0-shard-00-02-mjo4a.mongodb.net:27017/MMGroup?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin';
 mongoose.connect(url);
 
 var db = mongoose.connection;

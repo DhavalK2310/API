@@ -13,6 +13,7 @@ var projectmetaRouter = require('./routes/projectmetarouter');
 var customerRouter = require('./routes/customerrouter');
 var expenseRouter = require('./routes/expenserouter');
 var bookingRouter = require('./routes/bookingrouter');
+var crudRouter = require('./routes/crudrouter');
 
 var mongoose = require('mongoose');
 
@@ -48,6 +49,7 @@ app.use('/projectmeta', projectmetaRouter)
 app.use('/customer', customerRouter)
 app.use('/expense', expenseRouter)
 app.use('/booking', bookingRouter)
+app.use('/crud', crudRouter)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

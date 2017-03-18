@@ -1,4 +1,4 @@
-﻿var mongoose = require('mongoose');
+var mongoose = require('mongoose');
 var assert = require('assert');
 var Schema = mongoose.Schema;
 var ExpenseSchema = new Schema({
@@ -6,18 +6,18 @@ var ExpenseSchema = new Schema({
         type: String,
         require: true
     },
-    amount : {
+    project: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Project' }],
+    head: {
         type: String,
         require: true
-        
-    },
-    project:[{ type: mongoose.Schema.Types.ObjectId, ref: 'Project' }],
-    extype: {
-        type: String,
-        require:true
     },
     comment: {
-        type:String
+        type: String,
+        require: true
+    },
+    amount: {
+        type: Number,
+        require: true
     },
 }, {
     timestamps: true //Add two fields automatically createdAt and updatedAt

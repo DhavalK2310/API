@@ -6,17 +6,11 @@ var Expense = require('../models/expenseschema');
 var expenseRouter = express.Router();
 expenseRouter.use(bodyParser.json());
 
-var app = express();
 
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
-});
 
 
 expenseRouter.route('/')
-.get(function (req, res, next) {
+.get(function (req, res) {
     Expense.find({}, function (err, expense) {
         if (err) throw err;
         res.json(expense);
@@ -26,7 +20,7 @@ expenseRouter.route('/')
 
 
 
-.post(function (req, res, next) {
+.post(function (req, res) {
     Expense.create(req.body/**/, function (err, expense) {
         if (err) res.json({ "status": "fail", "message": "Something went wrong please try again" });
         res.json({ "status": "success", "message": "Expense  added successfully" });
@@ -34,7 +28,7 @@ expenseRouter.route('/')
 });
 
 expenseRouter.route('/remove')
-.post(function (req, res, next) {
+.post(function (req, res) {
     var id = req.body.id;
 
     Expense.remove({ _id: id }, function (err, doc) {
@@ -45,7 +39,7 @@ expenseRouter.route('/remove')
 
 
 expenseRouter.route('/getbyid')
-.post(function (req, res, next) {
+.post(function (req, res) {
     var id = req.body.id;
     try {
         Expense.findById(id, function (err, expense) {
@@ -58,7 +52,7 @@ expenseRouter.route('/getbyid')
     }
 });
 expenseRouter.route('/edit')
-.post(function (req, res, next) {
+.post(function (req, res) {
     var id = req.body.id;
     var date = req.body.date;
     var project = req.body.project;

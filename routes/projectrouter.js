@@ -3,25 +3,20 @@ var bodyParser = require('body-parser');
 var mongoose = require ('mongoose');
 var Projects = require('../models/projectschema');
 
-var app = express();
 var projectRouter = express.Router();
 projectRouter.use(bodyParser.json());
 
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
-});
+
 
 projectRouter.route('/')
-.get(function(req,res, next){
+.get(function(req,res){
     Projects.find({}, function (err, project) {
 		if(err) throw err;
 		res.json(project);
 		// 200, application/json
 	});
 })
-.post(function(req,res, next){
+.post(function(req,res){
     Projects.create(req.body/**/, function (err, project) {
         if (err) res.json({ "status": "fail", "message": "Something went wrong please try again" });
         res.json({ "status": "success", "message": "Project added successfully" });

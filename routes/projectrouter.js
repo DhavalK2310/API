@@ -14,14 +14,14 @@ app.use(function(req, res, next) {
 });
 
 projectRouter.route('/')
-.get(function(req,res){
+.get(function(req,res, next){
     Projects.find({}, function (err, project) {
 		if(err) throw err;
 		res.json(project);
 		// 200, application/json
 	});
 })
-.post(function(req,res){
+.post(function(req,res, next){
     Projects.create(req.body/**/, function (err, project) {
         if (err) res.json({ "status": "fail", "message": "Something went wrong please try again" });
         res.json({ "status": "success", "message": "Project added successfully" });

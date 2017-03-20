@@ -29,9 +29,18 @@ db.on('open',function(){
 })
 
 
+
 var app = express();
 // view engine setup
 
+// in NodeJS/Express (server)
+app.all('/*', function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "X-Requested-With");
+  res.header("Access-Control-Allow-Methods", "GET, POST","PUT");
+  next();
+
+});
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 

@@ -3,8 +3,15 @@ var bodyParser = require('body-parser');
 var mongoose = require ('mongoose');
 var Projects = require('../models/projectschema');
 
+var app = express();
 var projectRouter = express.Router();
 projectRouter.use(bodyParser.json());
+
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 
 projectRouter.route('/')
 .get(function(req,res){
